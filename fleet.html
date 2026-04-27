@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Fleet — Markov Automotive</title>
+  <meta name="description" content="Browse our curated fleet of premium and exotic vehicles. Ferrari, Lamborghini, McLaren, Rolls-Royce, and more — available for direct reservation in Springfield, VA.">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .filter-btn {
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border2);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      transition: all var(--transition);
+      cursor: pointer;
+      background: none;
+    }
+    .filter-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .filter-btn.active { border-color: var(--gold); color: var(--black); background: var(--gold); }
+    .fleet-count {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="wordmark">Markov Automotive</span>
+      <span class="sub">RaceSpec Exotics · Springfield, VA</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="booking.html" class="nav-reserve">Reserve</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="fleet.html">Fleet</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="booking.html">Reserve a Vehicle</a>
+</div>
+
+<!-- ══ PAGE HERO ══ -->
+<div class="page-hero">
+  <div class="container">
+    <span class="label">Our Vehicles</span>
+    <h1 style="margin-top:0.75rem;">The Fleet.</h1>
+    <p style="max-width:520px;margin-top:1rem;font-size:1.05rem;">Eight premium and exotic vehicles, maintained to the highest standard and available for direct reservation. Every car on this list is ready to drive.</p>
+  </div>
+</div>
+
+<!-- ══ FLEET ══ -->
+<section style="padding-top:0;">
+  <div class="container">
+    <div class="filter-bar" id="filter-bar">
+      <button class="filter-btn active" data-cat="All">All Vehicles</button>
+      <button class="filter-btn" data-cat="Supercar">Supercars</button>
+      <button class="filter-btn" data-cat="Sports Car">Sports Cars</button>
+      <button class="filter-btn" data-cat="Luxury GT">Luxury GT</button>
+      <button class="filter-btn" data-cat="Ultra Luxury">Ultra Luxury</button>
+      <button class="filter-btn" data-cat="Luxury SUV">Luxury SUV</button>
+    </div>
+    <div class="fleet-count" id="fleet-count"></div>
+    <div class="cars-grid" id="fleet-grid"></div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="wordmark">Markov Automotive</div>
+        <div class="sub">RaceSpec Exotics</div>
+        <p>Premium vehicle rentals in Springfield, Virginia. Direct reservations, professional service, no intermediaries.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <a href="fleet.html">Fleet</a>
+        <a href="booking.html">Reserve</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Popular Vehicles</h5>
+        <a href="car.html?id=ferrari-488">Ferrari 488 GTB</a>
+        <a href="car.html?id=lamborghini-huracan">Lamborghini Huracán</a>
+        <a href="car.html?id=rolls-royce-ghost">Rolls-Royce Ghost</a>
+        <a href="car.html?id=bentley-continental">Bentley Continental GT</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <address>6611 Iron Pl<br>Springfield, VA</address>
+        <a href="tel:2408993794">(240) 899-3794</a>
+        <a href="mailto:markovautomotive@gmail.com">markovautomotive@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="footer-year"></span> Markov Automotive · RaceSpec Exotics. All rights reserved.</p>
+      <p>Springfield, Virginia</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ CHAT ══ -->
+<div class="chat-widget">
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">M</div>
+        <div>
+          <div class="chat-header-name">Markov Automotive</div>
+          <div class="chat-header-status">● Typically responds quickly</div>
+        </div>
+      </div>
+      <button class="chat-close" id="chat-close">✕</button>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg bot">Hi — looking to book a vehicle or check availability? I can help point you in the right direction.</div>
+    </div>
+    <div class="chat-quick">
+      <button class="chat-quick-btn">How do I make a reservation?</button>
+      <button class="chat-quick-btn">What are your rates?</button>
+    </div>
+    <div class="chat-input-row">
+      <input id="chat-input" type="text" placeholder="Type a message…">
+      <button class="chat-send" id="chat-send">Send</button>
+    </div>
+  </div>
+  <button class="chat-toggle" id="chat-toggle" aria-label="Open chat">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </button>
+</div>
+
+<script src="cars.js"></script>
+<script src="shared.js"></script>
+<script>
+  let currentCat = 'All';
+
+  function renderFleet() {
+    const grid = document.getElementById('fleet-grid');
+    const countEl = document.getElementById('fleet-count');
+    const filtered = currentCat === 'All' ? CARS : CARS.filter(c => c.category === currentCat);
+
+    countEl.textContent = `${filtered.length} vehicle${filtered.length !== 1 ? 's' : ''} available`;
+
+    grid.innerHTML = filtered.map((car, i) => `
+      <a href="car.html?id=${car.id}" class="car-card reveal" data-delay="${i * 60}">
+        <div class="car-card-img">
+          <img src="${car.images[0]}" alt="${car.name}" loading="lazy">
+        </div>
+        <div class="car-card-body">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+            <div class="car-card-cat">${car.category}</div>
+            <div class="avail-badge">Available</div>
+          </div>
+          <div class="car-card-name">${car.name}</div>
+          <div class="car-card-desc">${car.shortDescription}</div>
+          <div style="display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;">
+            <span style="font-size:0.72rem;color:var(--muted);">${car.year} · ${car.transmission.split(' ')[0]} · ${car.horsepower} HP</span>
+          </div>
+          <div class="car-card-footer">
+            <div class="car-card-price">
+              <span class="amt">${formatPrice(car.pricePerDay)}</span>
+              <span class="per"> / day</span>
+            </div>
+            <span class="car-card-link">View Details →</span>
+          </div>
+        </div>
+      </a>
+    `).join('');
+
+    // Re-trigger reveal for new cards
+    const reveals = grid.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.transitionDelay = (e.target.dataset.delay || 0) + 'ms';
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05 });
+    reveals.forEach(r => io.observe(r));
+  }
+
+  document.getElementById('filter-bar').addEventListener('click', (e) => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentCat = btn.dataset.cat;
+    renderFleet();
+  });
+
+  renderFleet();
+</script>
+</body>
+</html>

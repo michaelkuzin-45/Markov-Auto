@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Markov Automotive</title>
+  <meta name="description" content="Contact Markov Automotive | RaceSpec Exotics. Reach us by phone, email, or contact form. Located in Springfield, VA.">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .contact-method {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      transition: border-color var(--transition);
+    }
+    .contact-method:hover { border-color: var(--gold); }
+    .contact-method-icon {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,168,76,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+    .contact-method-icon svg { width: 18px; height: 18px; }
+    .contact-method-body .method-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+    .contact-method-body .method-val {
+      font-size: 0.95rem;
+      color: var(--white);
+      word-break: break-word;
+    }
+    .contact-method-body .method-val a {
+      transition: color var(--transition);
+    }
+    .contact-method-body .method-val a:hover { color: var(--gold); }
+    .contact-method-body .method-note { font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem; }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="wordmark">Markov Automotive</span>
+      <span class="sub">RaceSpec Exotics · Springfield, VA</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="booking.html" class="nav-reserve">Reserve</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="fleet.html">Fleet</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="booking.html">Reserve a Vehicle</a>
+</div>
+
+<!-- ══ PAGE HERO ══ -->
+<div class="page-hero">
+  <div class="container">
+    <span class="label">Get in Touch</span>
+    <h1 style="margin-top:0.75rem;">Contact Us.</h1>
+    <p style="max-width:480px;margin-top:1rem;font-size:1rem;">Have a question about a vehicle, want to discuss availability, or ready to reserve? Reach out directly — we respond the same day.</p>
+  </div>
+</div>
+
+<!-- ══ CONTACT ══ -->
+<section style="padding-top:0;">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- LEFT: Contact Info -->
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <a href="tel:2408993794" class="contact-method reveal">
+          <div class="contact-method-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.35 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="contact-method-body">
+            <div class="method-label">Phone</div>
+            <div class="method-val"><a href="tel:2408993794">(240) 899-3794</a></div>
+            <div class="method-note">Call or text — typically answered same day</div>
+          </div>
+        </a>
+
+        <a href="mailto:markovautomotive@gmail.com" class="contact-method reveal" data-delay="60">
+          <div class="contact-method-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="contact-method-body">
+            <div class="method-label">Email</div>
+            <div class="method-val"><a href="mailto:markovautomotive@gmail.com" style="font-size:0.88rem;">markovautomotive@gmail.com</a></div>
+            <div class="method-note">Preferred for reservation inquiries</div>
+          </div>
+        </a>
+
+        <div class="contact-method reveal" data-delay="120">
+          <div class="contact-method-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-method-body">
+            <div class="method-label">Location</div>
+            <div class="method-val">6611 Iron Pl, Springfield, VA</div>
+            <div class="method-note">Northern Virginia · D.C. Metro Area</div>
+          </div>
+        </div>
+
+        <div class="contact-method reveal" data-delay="180">
+          <div class="contact-method-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="contact-method-body">
+            <div class="method-label">Hours</div>
+            <div class="method-val">Monday – Sunday, By Appointment</div>
+            <div class="method-note">Same-day response on all inquiries</div>
+          </div>
+        </div>
+
+        <div class="surface-card reveal" data-delay="240" style="padding:1.5rem;">
+          <div style="font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">Ready to Reserve?</div>
+          <p style="font-size:0.85rem;margin-bottom:1.25rem;">If you know which vehicle you'd like, the fastest path to your reservation is our booking request form.</p>
+          <a href="booking.html" class="btn btn-primary" style="width:100%;justify-content:center;">Request Reservation</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Contact Form -->
+      <div class="reveal" data-delay="60">
+        <div class="surface-card" style="padding:2.5rem;">
+          <div style="margin-bottom:2rem;">
+            <span class="label">Send a Message</span>
+            <h3 style="margin-top:0.75rem;font-family:var(--font-sans);font-weight:400;font-size:1.3rem;">We'll get back to you today.</h3>
+          </div>
+
+          <div id="contact-form">
+            <div class="form-grid" style="margin-bottom:1rem;">
+              <div class="form-field">
+                <label for="c-first">First Name</label>
+                <input type="text" id="c-first" placeholder="Michael">
+              </div>
+              <div class="form-field">
+                <label for="c-last">Last Name</label>
+                <input type="text" id="c-last" placeholder="Smith">
+              </div>
+              <div class="form-field">
+                <label for="c-phone">Phone</label>
+                <input type="tel" id="c-phone" placeholder="(555) 000-0000">
+              </div>
+              <div class="form-field">
+                <label for="c-email">Email</label>
+                <input type="email" id="c-email" placeholder="you@email.com">
+              </div>
+              <div class="form-field full">
+                <label for="c-subject">Subject</label>
+                <select id="c-subject">
+                  <option value="">— Select a topic —</option>
+                  <option>Reservation Inquiry</option>
+                  <option>Vehicle Availability</option>
+                  <option>Pricing & Deposit</option>
+                  <option>Delivery Options</option>
+                  <option>General Question</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-field full">
+                <label for="c-msg">Message</label>
+                <textarea id="c-msg" placeholder="Tell us what you're looking for — vehicle, dates, occasion, or any questions you have…"></textarea>
+              </div>
+            </div>
+
+            <div id="contact-error" style="display:none;color:#e05050;font-size:0.82rem;margin-bottom:1rem;padding:0.75rem 1rem;background:rgba(224,80,80,0.08);border:1px solid rgba(224,80,80,0.2);border-radius:var(--radius);"></div>
+
+            <button class="btn btn-primary" id="contact-submit" style="width:100%;justify-content:center;">Send Message</button>
+          </div>
+
+          <div id="contact-success" style="display:none;text-align:center;padding:2rem 0;">
+            <div style="font-size:2rem;margin-bottom:1rem;">✓</div>
+            <h4 style="font-family:var(--font-sans);font-weight:500;margin-bottom:0.5rem;">Message Sent</h4>
+            <p style="font-size:0.85rem;">Thank you for reaching out. We'll respond to you today.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="wordmark">Markov Automotive</div>
+        <div class="sub">RaceSpec Exotics</div>
+        <p>Premium vehicle rentals in Springfield, Virginia. Direct reservations, professional service, no intermediaries.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <a href="fleet.html">Fleet</a>
+        <a href="booking.html">Reserve</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Popular Vehicles</h5>
+        <a href="car.html?id=ferrari-488">Ferrari 488 GTB</a>
+        <a href="car.html?id=lamborghini-huracan">Lamborghini Huracán</a>
+        <a href="car.html?id=rolls-royce-ghost">Rolls-Royce Ghost</a>
+        <a href="fleet.html">View All →</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <address>6611 Iron Pl<br>Springfield, VA</address>
+        <a href="tel:2408993794">(240) 899-3794</a>
+        <a href="mailto:markovautomotive@gmail.com">markovautomotive@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="footer-year"></span> Markov Automotive · RaceSpec Exotics. All rights reserved.</p>
+      <p>Springfield, Virginia</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ CHAT ══ -->
+<div class="chat-widget">
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">M</div>
+        <div>
+          <div class="chat-header-name">Markov Automotive</div>
+          <div class="chat-header-status">● Typically responds quickly</div>
+        </div>
+      </div>
+      <button class="chat-close" id="chat-close">✕</button>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg bot">Hi — looking to book a vehicle or check availability? I can help point you in the right direction.</div>
+    </div>
+    <div class="chat-quick">
+      <button class="chat-quick-btn">How do I make a reservation?</button>
+      <button class="chat-quick-btn">Where are you located?</button>
+    </div>
+    <div class="chat-input-row">
+      <input id="chat-input" type="text" placeholder="Type a message…">
+      <button class="chat-send" id="chat-send">Send</button>
+    </div>
+  </div>
+  <button class="chat-toggle" id="chat-toggle" aria-label="Open chat">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </button>
+</div>
+
+<script src="cars.js"></script>
+<script src="shared.js"></script>
+<script>
+  document.getElementById('contact-submit').addEventListener('click', () => {
+    const errEl = document.getElementById('contact-error');
+    errEl.style.display = 'none';
+    const first = document.getElementById('c-first').value.trim();
+    const last = document.getElementById('c-last').value.trim();
+    const phone = document.getElementById('c-phone').value.trim();
+    const email = document.getElementById('c-email').value.trim();
+    const msg = document.getElementById('c-msg').value.trim();
+
+    if (!first || !last) { errEl.textContent = 'Please enter your name.'; errEl.style.display = 'block'; return; }
+    if (!phone && !email) { errEl.textContent = 'Please provide a phone number or email address.'; errEl.style.display = 'block'; return; }
+    if (!msg) { errEl.textContent = 'Please include a message.'; errEl.style.display = 'block'; return; }
+
+    document.getElementById('contact-form').style.display = 'none';
+    document.getElementById('contact-success').style.display = 'block';
+  });
+</script>
+</body>
+</html>

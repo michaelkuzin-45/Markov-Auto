@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markov Automotive — Premium Car Rentals in Springfield, VA</title>
+  <meta name="description" content="Markov Automotive | RaceSpec Exotics — premium vehicle rentals in Springfield, Virginia. Ferrari, Lamborghini, Rolls-Royce, and more. Direct reservations, no middlemen.">
+  <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="wordmark">Markov Automotive</span>
+      <span class="sub">RaceSpec Exotics · Springfield, VA</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="booking.html" class="nav-reserve">Reserve</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="fleet.html">Fleet</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="booking.html">Reserve a Vehicle</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1800&q=80')"></div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span>Springfield, Virginia</span>
+      </div>
+      <h1>Drive something<br><em>worth remembering.</em></h1>
+      <p class="hero-sub">Markov Automotive maintains a curated fleet of premium and exotic vehicles available for direct reservation. No platforms, no middlemen — just the car you want, when you need it.</p>
+      <div class="hero-ctas">
+        <a href="fleet.html" class="btn btn-primary">Browse the Fleet</a>
+        <a href="booking.html" class="btn btn-outline">Request Reservation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STAT BAR ══ -->
+<div class="stat-bar">
+  <div class="container">
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="val">8</div>
+        <div class="desc">Premium Vehicles</div>
+      </div>
+      <div class="stat-item">
+        <div class="val">Direct</div>
+        <div class="desc">Reservation Process</div>
+      </div>
+      <div class="stat-item">
+        <div class="val">Local</div>
+        <div class="desc">Springfield, VA</div>
+      </div>
+      <div class="stat-item">
+        <div class="val">Same-Day</div>
+        <div class="desc">Response Time</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ WHY ══ -->
+<section>
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="label">Why Markov Automotive</span>
+      <h2>The right way to rent<br>a premium vehicle.</h2>
+      <p>We keep the process straightforward — browse our fleet, check availability, and submit a reservation request directly to us. No platforms, no surprises.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
+      <div class="surface-card reveal" data-delay="0">
+        <div style="font-family:var(--font-serif);font-size:2.5rem;color:var(--gold);opacity:0.4;margin-bottom:1rem;line-height:1;">01</div>
+        <h4 style="font-family:var(--font-sans);font-size:1rem;font-weight:500;margin-bottom:0.75rem;">Direct Reservation</h4>
+        <p style="font-size:0.85rem;">No third-party platforms or marketplace fees. Every reservation goes directly to us — faster responses, clearer terms, and no hidden costs added at checkout.</p>
+      </div>
+      <div class="surface-card reveal" data-delay="80">
+        <div style="font-family:var(--font-serif);font-size:2.5rem;color:var(--gold);opacity:0.4;margin-bottom:1rem;line-height:1;">02</div>
+        <h4 style="font-family:var(--font-sans);font-size:1rem;font-weight:500;margin-bottom:0.75rem;">Well-Maintained Fleet</h4>
+        <p style="font-size:0.85rem;">Every vehicle is professionally serviced and presented in clean, immaculate condition. What you see in the listing is exactly what you pick up — no surprises.</p>
+      </div>
+      <div class="surface-card reveal" data-delay="160">
+        <div style="font-family:var(--font-serif);font-size:2.5rem;color:var(--gold);opacity:0.4;margin-bottom:1rem;line-height:1;">03</div>
+        <h4 style="font-family:var(--font-sans);font-size:1rem;font-weight:500;margin-bottom:0.75rem;">Transparent Pricing</h4>
+        <p style="font-size:0.85rem;">Daily rates and deposit requirements are listed on every vehicle page. The price you see is the rate we quote — we believe in complete transparency.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ POPULAR FLEET ══ -->
+<section style="padding-top:0;">
+  <div class="container">
+    <div class="section-heading reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <span class="label">Available Now</span>
+        <h2 style="margin-top:0.75rem;">Popular rentals.</h2>
+      </div>
+      <a href="fleet.html" class="btn btn-ghost">View full fleet →</a>
+    </div>
+    <div class="cars-grid" id="featured-cars"></div>
+  </div>
+</section>
+
+<!-- ══ CTA BAND ══ -->
+<section style="padding:80px 0;">
+  <div class="container">
+    <div style="background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:clamp(2.5rem,6vw,5rem);display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
+      <div>
+        <span class="label">Ready to drive?</span>
+        <h2 style="margin-top:0.75rem;max-width:480px;">Make your reservation<br>in minutes.</h2>
+        <p style="margin-top:1rem;max-width:440px;">Choose a vehicle, select your dates, and submit your request. We confirm availability and finalize the details directly with you.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;min-width:200px;">
+        <a href="booking.html" class="btn btn-primary" style="justify-content:center;">Request Reservation</a>
+        <a href="contact.html" class="btn btn-outline" style="justify-content:center;">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="wordmark">Markov Automotive</div>
+        <div class="sub">RaceSpec Exotics</div>
+        <p>Premium vehicle rentals in Springfield, Virginia. Direct reservations, professional service, no intermediaries.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <a href="fleet.html">Fleet</a>
+        <a href="booking.html">Reserve</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Fleet</h5>
+        <a href="car.html?id=ferrari-488">Ferrari 488 GTB</a>
+        <a href="car.html?id=lamborghini-huracan">Lamborghini Huracán</a>
+        <a href="car.html?id=rolls-royce-ghost">Rolls-Royce Ghost</a>
+        <a href="fleet.html">View All →</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <address>6611 Iron Pl<br>Springfield, VA</address>
+        <a href="tel:2408993794">(240) 899-3794</a>
+        <a href="mailto:markovautomotive@gmail.com">markovautomotive@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="footer-year"></span> Markov Automotive · RaceSpec Exotics. All rights reserved.</p>
+      <p>Springfield, Virginia</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ CHAT WIDGET ══ -->
+<div class="chat-widget">
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">M</div>
+        <div>
+          <div class="chat-header-name">Markov Automotive</div>
+          <div class="chat-header-status">● Typically responds quickly</div>
+        </div>
+      </div>
+      <button class="chat-close" id="chat-close">✕</button>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg bot">Hi — looking to book a vehicle or check availability? I can help point you in the right direction.</div>
+    </div>
+    <div class="chat-quick">
+      <button class="chat-quick-btn">How do I make a reservation?</button>
+      <button class="chat-quick-btn">What vehicles are available?</button>
+      <button class="chat-quick-btn">What are your rates?</button>
+    </div>
+    <div class="chat-input-row">
+      <input id="chat-input" type="text" placeholder="Type a message…">
+      <button class="chat-send" id="chat-send">Send</button>
+    </div>
+  </div>
+  <button class="chat-toggle" id="chat-toggle" aria-label="Open chat">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </button>
+</div>
+
+<script src="cars.js"></script>
+<script src="shared.js"></script>
+<script>
+  // Render 3 featured cars
+  const featured = CARS.slice(0, 3);
+  const grid = document.getElementById('featured-cars');
+  grid.innerHTML = featured.map(car => `
+    <a href="car.html?id=${car.id}" class="car-card reveal">
+      <div class="car-card-img">
+        <img src="${car.images[0]}" alt="${car.name}" loading="lazy">
+      </div>
+      <div class="car-card-body">
+        <div class="car-card-cat">${car.category}</div>
+        <div class="car-card-name">${car.name}</div>
+        <div class="car-card-desc">${car.shortDescription}</div>
+        <div class="car-card-footer">
+          <div class="car-card-price">
+            <span class="amt">${formatPrice(car.pricePerDay)}</span>
+            <span class="per"> / day</span>
+          </div>
+          <span class="car-card-link">View Details →</span>
+        </div>
+      </div>
+    </a>
+  `).join('');
+</script>
+</body>
+</html>

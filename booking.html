@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Reservation — Markov Automotive</title>
+  <meta name="description" content="Request a vehicle reservation with Markov Automotive. Select your vehicle, choose your dates, and we'll confirm availability directly.">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .booking-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 1024px) {
+      .booking-layout { grid-template-columns: 1fr; }
+    }
+    .form-section-title {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.25rem;
+    }
+    .form-block {
+      margin-bottom: 2.5rem;
+    }
+    .selected-car-preview {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+    }
+    .selected-car-preview img {
+      width: 80px;
+      height: 54px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      flex-shrink: 0;
+    }
+    .selected-car-preview .info .name {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+    }
+    .selected-car-preview .info .cat {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .success-panel {
+      display: none;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .success-panel .icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: rgba(92,216,138,0.12);
+      border: 1px solid rgba(92,216,138,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.75rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav scrolled" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="wordmark">Markov Automotive</span>
+      <span class="sub">RaceSpec Exotics · Springfield, VA</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="booking.html" class="nav-reserve">Reserve</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="fleet.html">Fleet</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="booking.html">Reserve a Vehicle</a>
+</div>
+
+<!-- ══ PAGE HERO ══ -->
+<div class="page-hero">
+  <div class="container">
+    <span class="label">Reservations</span>
+    <h1 style="margin-top:0.75rem;">Request a Reservation.</h1>
+    <p style="max-width:520px;margin-top:1rem;font-size:1rem;">Complete the form below and we'll confirm availability and finalize details with you directly. Most requests receive a response the same day.</p>
+  </div>
+</div>
+
+<!-- ══ BOOKING FORM ══ -->
+<section style="padding-top:0;padding-bottom:100px;">
+  <div class="container">
+    <div class="booking-layout">
+      <!-- LEFT: Form -->
+      <div>
+        <div id="booking-form-wrap">
+          <!-- Vehicle Selection -->
+          <div class="form-block">
+            <div class="form-section-title">01 — Select Your Vehicle</div>
+            <div id="car-preview" class="selected-car-preview" style="display:none;">
+              <img id="preview-img" src="" alt="">
+              <div class="info">
+                <div class="cat" id="preview-cat"></div>
+                <div class="name" id="preview-name"></div>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="vehicle-select">Vehicle</label>
+              <select id="vehicle-select">
+                <option value="">— Choose a vehicle —</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Dates & Pickup -->
+          <div class="form-block">
+            <div class="form-section-title">02 — Dates & Location</div>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="pickup-date">Pickup Date</label>
+                <input type="date" id="pickup-date">
+              </div>
+              <div class="form-field">
+                <label for="return-date">Return Date</label>
+                <input type="date" id="return-date">
+              </div>
+              <div class="form-field full">
+                <label for="pickup-location">Pickup Location / Notes</label>
+                <input type="text" id="pickup-location" placeholder="e.g. 6611 Iron Pl, Springfield, VA or custom delivery address">
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="form-block">
+            <div class="form-section-title">03 — Your Information</div>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" placeholder="Michael">
+              </div>
+              <div class="form-field">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" placeholder="Smith">
+              </div>
+              <div class="form-field">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="(555) 000-0000">
+              </div>
+              <div class="form-field">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="you@email.com">
+              </div>
+              <div class="form-field full">
+                <label for="notes">Additional Notes</label>
+                <textarea id="notes" placeholder="Any special requests, questions about deposit, delivery options, or occasion details…"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div id="form-error" style="display:none;color:#e05050;font-size:0.82rem;margin-bottom:1rem;padding:0.75rem 1rem;background:rgba(224,80,80,0.08);border:1px solid rgba(224,80,80,0.2);border-radius:var(--radius);"></div>
+
+          <button class="btn btn-primary" id="submit-btn" style="width:100%;justify-content:center;padding:1.1rem 2rem;font-size:0.85rem;">
+            Request Reservation
+          </button>
+          <p style="font-size:0.72rem;color:var(--muted);margin-top:1rem;line-height:1.6;">By submitting this form, you authorize Markov Automotive to contact you regarding your reservation request. Submission does not guarantee a booking. A team member will follow up to confirm availability and deposit terms.</p>
+        </div>
+
+        <!-- Success State -->
+        <div class="success-panel" id="success-panel">
+          <div class="icon">✓</div>
+          <h2 style="margin-bottom:0.75rem;">Reservation Request Sent.</h2>
+          <p style="max-width:420px;margin:0 auto 2rem;">Thank you. We've received your request and will be in touch within hours to confirm availability and finalize the details.</p>
+          <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+            <a href="fleet.html" class="btn btn-outline">Browse Fleet</a>
+            <a href="index.html" class="btn btn-primary">Back to Home</a>
+          </div>
+          <div style="margin-top:2.5rem;padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);">
+            <div style="font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">While You Wait</div>
+            <p style="font-size:0.85rem;margin-bottom:0.5rem;">Call us directly at <a href="tel:2408993794" style="color:var(--gold);">(240) 899-3794</a></p>
+            <p style="font-size:0.85rem;">Email <a href="mailto:markovautomotive@gmail.com" style="color:var(--gold);">markovautomotive@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Summary -->
+      <div>
+        <div class="booking-summary">
+          <h4>Booking Summary</h4>
+
+          <div class="summary-row">
+            <span class="key">Vehicle</span>
+            <span class="val" id="sum-vehicle">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="key">Pickup Date</span>
+            <span class="val" id="sum-pickup">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="key">Return Date</span>
+            <span class="val" id="sum-return">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="key">Daily Rate</span>
+            <span class="val" id="sum-rate">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="key">Rental Days</span>
+            <span class="val" id="sum-days">—</span>
+          </div>
+
+          <div class="summary-total">
+            <span class="key">Estimated Total</span>
+            <span class="val" id="sum-total">—</span>
+          </div>
+          <p class="summary-note">Final pricing and availability will be confirmed after request. Deposit terms vary by vehicle.</p>
+        </div>
+
+        <div class="surface-card" style="margin-top:1rem;padding:1.25rem;">
+          <div style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Questions?</div>
+          <p style="font-size:0.82rem;margin-bottom:0.75rem;">Prefer to speak with someone directly? We're reachable by phone or email.</p>
+          <a href="tel:2408993794" style="display:block;font-size:0.85rem;color:var(--muted2);margin-bottom:0.4rem;transition:color var(--transition);" onmouseenter="this.style.color='var(--gold)'" onmouseleave="this.style.color='var(--muted2)'">(240) 899-3794</a>
+          <a href="mailto:markovautomotive@gmail.com" style="display:block;font-size:0.82rem;color:var(--muted2);word-break:break-word;transition:color var(--transition);" onmouseenter="this.style.color='var(--gold)'" onmouseleave="this.style.color='var(--muted2)'">markovautomotive@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="wordmark">Markov Automotive</div>
+        <div class="sub">RaceSpec Exotics</div>
+        <p>Premium vehicle rentals in Springfield, Virginia. Direct reservations, professional service, no intermediaries.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <a href="fleet.html">Fleet</a>
+        <a href="booking.html">Reserve</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <address>6611 Iron Pl<br>Springfield, VA</address>
+        <a href="tel:2408993794">(240) 899-3794</a>
+        <a href="mailto:markovautomotive@gmail.com">markovautomotive@gmail.com</a>
+      </div>
+      <div class="footer-col">
+        <h5>Hours</h5>
+        <p style="font-size:0.85rem;color:var(--muted2);">Monday – Sunday<br>By appointment</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="footer-year"></span> Markov Automotive · RaceSpec Exotics. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ CHAT ══ -->
+<div class="chat-widget">
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">M</div>
+        <div>
+          <div class="chat-header-name">Markov Automotive</div>
+          <div class="chat-header-status">● Typically responds quickly</div>
+        </div>
+      </div>
+      <button class="chat-close" id="chat-close">✕</button>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg bot">Hi — looking to book a vehicle or check availability? I can help point you in the right direction.</div>
+    </div>
+    <div class="chat-input-row">
+      <input id="chat-input" type="text" placeholder="Type a message…">
+      <button class="chat-send" id="chat-send">Send</button>
+    </div>
+  </div>
+  <button class="chat-toggle" id="chat-toggle" aria-label="Open chat">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </button>
+</div>
+
+<script src="cars.js"></script>
+<script src="shared.js"></script>
+<script>
+  // ── Populate vehicle dropdown ──
+  const select = document.getElementById('vehicle-select');
+  CARS.forEach(car => {
+    const opt = document.createElement('option');
+    opt.value = car.id;
+    opt.textContent = `${car.name} — ${formatPrice(car.pricePerDay)}/day`;
+    select.appendChild(opt);
+  });
+
+  // ── Pre-select from URL param ──
+  const params = new URLSearchParams(window.location.search);
+  const preId = params.get('id');
+  if (preId) {
+    select.value = preId;
+    updateCarPreview(preId);
+  }
+
+  // ── Date defaults ──
+  const today = new Date();
+  const tomorrow = new Date(today); tomorrow.setDate(today.getDate() + 1);
+  const dayAfter = new Date(today); dayAfter.setDate(today.getDate() + 4);
+  const fmt = d => d.toISOString().split('T')[0];
+  document.getElementById('pickup-date').min = fmt(today);
+  document.getElementById('return-date').min = fmt(tomorrow);
+
+  // ── Summary update ──
+  function updateSummary() {
+    const carId = select.value;
+    const car = getCarById(carId);
+    const pickupVal = document.getElementById('pickup-date').value;
+    const returnVal = document.getElementById('return-date').value;
+
+    document.getElementById('sum-vehicle').textContent = car ? car.name : '—';
+    document.getElementById('sum-rate').textContent = car ? formatPrice(car.pricePerDay) + '/day' : '—';
+
+    let days = null;
+    if (pickupVal && returnVal) {
+      const p = new Date(pickupVal);
+      const r = new Date(returnVal);
+      const diff = Math.round((r - p) / (1000*60*60*24));
+      if (diff > 0) days = diff;
+    }
+
+    const fmtDate = (val) => {
+      if (!val) return '—';
+      const d = new Date(val + 'T00:00:00');
+      return d.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+    };
+
+    document.getElementById('sum-pickup').textContent = pickupVal ? fmtDate(pickupVal) : '—';
+    document.getElementById('sum-return').textContent = returnVal ? fmtDate(returnVal) : '—';
+    document.getElementById('sum-days').textContent = days !== null ? `${days} day${days !== 1 ? 's' : ''}` : '—';
+    document.getElementById('sum-total').textContent = (car && days !== null && days > 0) ? formatPrice(car.pricePerDay * days) : '—';
+  }
+
+  function updateCarPreview(id) {
+    const car = getCarById(id);
+    const preview = document.getElementById('car-preview');
+    if (car) {
+      document.getElementById('preview-img').src = car.images[0];
+      document.getElementById('preview-cat').textContent = car.category;
+      document.getElementById('preview-name').textContent = car.name;
+      preview.style.display = 'flex';
+    } else {
+      preview.style.display = 'none';
+    }
+    updateSummary();
+  }
+
+  select.addEventListener('change', () => updateCarPreview(select.value));
+  document.getElementById('pickup-date').addEventListener('change', () => {
+    const p = document.getElementById('pickup-date').value;
+    const r = document.getElementById('return-date');
+    if (p && (!r.value || r.value <= p)) {
+      const next = new Date(p + 'T00:00:00');
+      next.setDate(next.getDate() + 1);
+      r.value = fmt(next);
+    }
+    updateSummary();
+  });
+  document.getElementById('return-date').addEventListener('change', updateSummary);
+  updateSummary();
+
+  // ── Submit ──
+  document.getElementById('submit-btn').addEventListener('click', () => {
+    const errEl = document.getElementById('form-error');
+    errEl.style.display = 'none';
+
+    const carId = select.value;
+    const pickup = document.getElementById('pickup-date').value;
+    const ret = document.getElementById('return-date').value;
+    const first = document.getElementById('first-name').value.trim();
+    const last = document.getElementById('last-name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+
+    const errors = [];
+    if (!carId) errors.push('Please select a vehicle.');
+    if (!pickup) errors.push('Please select a pickup date.');
+    if (!ret) errors.push('Please select a return date.');
+    if (pickup && ret && ret <= pickup) errors.push('Return date must be after pickup date.');
+    if (!first || !last) errors.push('Please enter your full name.');
+    if (!phone && !email) errors.push('Please provide at least a phone number or email address.');
+
+    if (errors.length) {
+      errEl.textContent = errors[0];
+      errEl.style.display = 'block';
+      return;
+    }
+
+    // Show success
+    document.getElementById('booking-form-wrap').style.display = 'none';
+    document.getElementById('success-panel').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>
